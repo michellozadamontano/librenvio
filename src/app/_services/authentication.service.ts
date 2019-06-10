@@ -21,12 +21,13 @@ export class AuthenticationService {
   }
 
   login(email:string, password:string):Observable<any> {
-    let url = environment.apiUrl + 'login';
+    let url = environment.apiUrl + 'api/login';
     return this.http.post<any>(url,{email,password}).pipe(map(user => {
         // login successful if there's a jwt token in the response
         if (user && user.data.api_token) {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify(user.data));
+          localStorage.setItem('access_token', user.data.api_token);
           console.log(user.data.api_token);
 
         }
@@ -39,6 +40,7 @@ export class AuthenticationService {
   }
   logout() {
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('access_token');
     this.currentUserSubject.next(null);
   }
 }

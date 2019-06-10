@@ -1,3 +1,18 @@
-<p>
-  home works!
-</p>
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser; else elseTemplate">
+  <div class="navbar-nav">
+      <a class="nav-item nav-link" routerLink="/">Home</a>
+      <a class="nav-item nav-link" routerLink="/app/product">Productos</a>
+      <a class="nav-item nav-link" (click)="logout()">Logout</a>
+      <a class="nav-item nav-link" (click)="logout()">{{currentUser.name}}</a>
+  </div>
+</nav>
+<ng-template #elseTemplate>
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/">Home</a>
+        <a class="nav-item nav-link" routerLink="/app/product">Productos</a>
+        <a class="nav-item nav-link" routerLink="/login">Iniciar Sesion</a>
+    </div>
+  </nav>
+</ng-template>
+<p>Aqui vamos a mostrar algunos productos de los que se se puede enviar</p>

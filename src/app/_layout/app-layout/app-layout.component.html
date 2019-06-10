@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+  <div class="navbar-nav">
+      <a class="nav-item nav-link" routerLink="/">Home</a>
+      <a class="nav-item nav-link" routerLink="/app/product">Productos</a>
+      <a class="nav-item nav-link" routerLink="/app/package">Mis paquetes</a>
+      <a class="nav-item nav-link hover-close" (click)="logout()">Logout</a>
+      <a class="nav-item nav-link hover-close" (click)="logout()">{{currentUser.name}}</a>
+  </div>
+</nav>
+
+<!-- main app container -->
+<div class="jumbotron">
+  <div class="container">
+      <div class="row">
+          <div class="col-12">
+              <app-alert></app-alert>
+              <router-outlet></router-outlet>
+          </div>
+      </div>
+  </div>
+</div>

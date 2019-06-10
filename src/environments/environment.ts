@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://dollartree.net/api/'
+  apiUrl: 'http://dollartree.net/'
 };
 
 /*
